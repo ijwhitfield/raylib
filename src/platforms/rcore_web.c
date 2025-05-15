@@ -1588,13 +1588,9 @@ static void MouseButtonCallback(GLFWwindow *window, int button, int action, int 
 // GLFW3 Cursor Position Callback, runs on mouse move
 static void MouseCursorPosCallback(GLFWwindow *window, double x, double y)
 {
-    // If the pointer is not locked, follow the position
-    if (!CORE.Input.Mouse.cursorHidden)
-    {
-        CORE.Input.Mouse.currentPosition.x = (float)x;
-        CORE.Input.Mouse.currentPosition.y = (float)y;
-        CORE.Input.Touch.position[0] = CORE.Input.Mouse.currentPosition;
-    }
+    CORE.Input.Mouse.currentPosition.x = (float)x;
+    CORE.Input.Mouse.currentPosition.y = (float)y;
+    CORE.Input.Touch.position[0] = CORE.Input.Mouse.currentPosition;
 
 #if defined(SUPPORT_GESTURES_SYSTEM) && defined(SUPPORT_MOUSE_GESTURES)
     // Process mouse events as touches to be able to use mouse-gestures
